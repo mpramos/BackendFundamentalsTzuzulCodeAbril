@@ -1,21 +1,27 @@
 const express= require("express")
 
 const app=express()
-//  Indica que estamos visitando el home , inicio raiz   
+app.use(express.text())// Utilizando el middleware para 
+// la conversion de datos 
+
 app.get("/",function(peticion,respuesta) {
    respuesta.send("Metodo GET")    
 })
-// /usuarios:Es la ruta que indica que estamos visitando la sección usuarios
-// En teoria esta ruta indica que estamos creando usuarios 
-app.post("/usuarios",function(preticion, respuesta) {
-    respuesta.send("Método POST")
+app.post("/usuarios",function(peticion, respuesta) {
+    const user=peticion.body
+    respuesta.send("Método POST: "+user)
     
+})
+app.post("/json",function(peticion, respuesta) {
+    console.log(peticion.body)  
+    respuesta.send("Hola: ")    
 })
 
 app.put("/",function(peticion, respuesta) {
+    //en body se encuentra la información que nos da el cliente
     respuesta.send("Método PUT")
 })
-
+  
 app.delete("/", function(peticion, respuesta) {
     respuesta.send("Método DELETE")
 })
