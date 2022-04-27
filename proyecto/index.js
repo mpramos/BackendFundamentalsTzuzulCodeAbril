@@ -1,24 +1,20 @@
 const express= require("express")
 
 const app=express()
-app.use(express.text())// Utilizando el middleware para 
-// la conversion de datos 
-
+app.use(express.text())
+app.use(express.json()) // Utilizando el middleware para la coversion de datos
 app.get("/",function(peticion,respuesta) {
    respuesta.send("Metodo GET")    
 })
 app.post("/usuarios",function(peticion, respuesta) {
     const user=peticion.body
     respuesta.send("Método POST: "+user)
-    
 })
 app.post("/json",function(peticion, respuesta) {
-    console.log(peticion.body)  
-    respuesta.send("Hola: ")    
+    const user=peticion.body 
+    respuesta.send("Hola: "+ user.nombre)    
 })
-
 app.put("/",function(peticion, respuesta) {
-    //en body se encuentra la información que nos da el cliente
     respuesta.send("Método PUT")
 })
   
