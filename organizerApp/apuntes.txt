@@ -1,0 +1,5 @@
+Configurando los archivos de css
+Configurando las rutas de la aplicación
+Se crearon dos carpetas views y static
+views-->para html
+static-->para css o assets

@@ -1,17 +1,24 @@
-// modulo que nos permite obtener la ubicacion de los archivos
-// Path ya viendo instalado, es un modulo localque ya viene en nodeJS
-const path = require("path") // path:permite administrar rutas de archivos
-// Modulos externos
+const path = require("path")
 const express=require('express')
 const port=5000
+
+//Importando router
+const users=require("./routes/users")
 const app = express()
-// si qwuiero mandar html hacemos lo siguiente
+
+//>>>>>>>>>> SECCION PARA LOS MIDDLEWARE
+//Middleware para archivos estaticos, con esto podemos usar css , html
+app.use("/static",express.static(path.join(__dirname,"static")))
+
+// >>>>>>>> SECCION PARA LOS ROUTERS
+
+// Vamos a asignar un router osea el de users
+app.use(users)// No es un middleware, solo le asignamos la ruta
+
 app.get("/",(req,res)=>{
     console.log(__dirname)
-    // enviamos el archivo con sendFile
-    // permite unir la ruta en la cual tenemos la ruta del proyecto
-    return res.sendFile(path.join(__dirname,"static","index.html"))
+    return res.sendFile(path.join(__dirname,"views","index.html"))
 })
 app.listen(port,()=>{
-    console.log("Escuchando en : http://localhost: "+ port)
+    console.log("Escuchando en : http://localhost:"+ port)
 })
