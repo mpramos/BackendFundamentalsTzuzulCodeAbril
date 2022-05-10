@@ -1,19 +1,15 @@
 const path = require("path")
-const express=require('express')
+const express=require("express")
 const port=5000
+const users=require("./routes/users")
 
 //Importando router
-const users=require("./routes/users")
 const app = express()
 
-//>>>>>>>>>> SECCION PARA LOS MIDDLEWARE
-//Middleware para archivos estaticos, con esto podemos usar css , html
 app.use("/static",express.static(path.join(__dirname,"static")))
 
-// >>>>>>>> SECCION PARA LOS ROUTERS
 
-// Vamos a asignar un router osea el de users
-app.use(users)// No es un middleware, solo le asignamos la ruta
+app.use(users)
 
 app.get("/",(req,res)=>{
     console.log(__dirname)

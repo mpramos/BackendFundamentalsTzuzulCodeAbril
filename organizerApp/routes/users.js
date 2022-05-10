@@ -1,12 +1,13 @@
 // DEFINIMOS LA RUTAS PARA EL USUARIO
 const express= require("express")
-
-// Definimos un router, dónde tendremos asignados distintas rutas
-// En express nosotros tenemos ya una función que nos define  crear el route
-// la expresion es express.Router()
+const database=require('../libs/database')
 const router =express.Router()
-// Nos devolveria la pagina de usuarios
+console.log(database)
 router.get("/users",(req,res)=>{
+    database.connection.query("SELECT * FROM users",function (error,result) {
+        console.log(error)
+        console.log(result)
+    })
     res.json({
         ruta:"users"
     })

@@ -1,5 +1,4 @@
-Configurando los archivos de css
-Configurando las rutas de la aplicación
-Se crearon dos carpetas views y static
-views-->para html
-static-->para css o assets
+1.- Instalamos mysql2 con npm install mysql2
+2.- Creamos un archivo database dentro de la carpeta libs para conectarnos
+con la base de datos 
+3.- mysql trabaja con callbacks
